@@ -98,7 +98,7 @@ interface Armor {
     rank: 'low' | 'high' | 'master';
 }
 
-let props = defineProps({
+const props = defineProps({
     armors: {
         type: Array as PropType<Armor[]>,
         default: () => [],
@@ -134,14 +134,14 @@ function weakestAgainst(armorResistance: ArmorResistance): string {
     return weakestElement;
 }
 
-let filters = ref({
+const filters = ref({
     rank: 'low'
 });
 
 
 watch(filters, (newFilters: object) => {
     if(newFilters){
-        let filterObj = {};
+        const filterObj = {};
         for(const key in newFilters) {
             if (newFilters[key] && !(key.includes('filter') || key.includes('range'))) {
                 filterObj[`filter[${key}]`] = newFilters[key] ;
